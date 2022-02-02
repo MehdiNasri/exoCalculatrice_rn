@@ -1,4 +1,4 @@
-import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { View, Text, Pressable, StyleSheet, Button } from 'react-native';
 import React, { useState } from 'react';
 
 export const Calculatrice = () => {
@@ -7,6 +7,10 @@ export const Calculatrice = () => {
   const handlePress = (value) =>{
       setCalcul(calcul += value)
   }
+  const handleClear = () =>{
+    setCalcul("")
+    setResultat(0)
+}
   const handleResult = () => {
    setResultat(eval(calcul))
   }
@@ -78,6 +82,7 @@ export const Calculatrice = () => {
       <View>
           <Text style={styles.textCalcul}> Resultat : {resultat}</Text>
       </View>
+      <Button onPress={handleClear} title='EFFACER'></Button>
     </View>
   );
 };
