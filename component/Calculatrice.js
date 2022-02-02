@@ -1,4 +1,4 @@
-import { View, Text, Pressable, StyleSheet, Button } from 'react-native';
+import { View, Text, Pressable, StyleSheet, Button, TextInput } from 'react-native';
 import React, { useState } from 'react';
 
 export const Calculatrice = () => {
@@ -14,6 +14,9 @@ export const Calculatrice = () => {
   const handleResult = () => {
    setResultat(eval(calcul))
   }
+  const handleChange = (value) => {
+    setCalcul(value)
+   }
   return (
     <View style={styles.body}>
       <Text style={styles.text}>CALCULATRICE</Text>
@@ -71,6 +74,13 @@ export const Calculatrice = () => {
             <Text style={styles.textPress}>/</Text>
         </Pressable>
       </View>
+      <TextInput 
+        onChangeText={handleChange}
+        placeholder='Ecrire le calcul'
+        style={styles.input}
+        keyboardType="default"
+
+      />
       <View> 
         <Pressable style={styles.press} onPress={handleResult}>
             <Text style={styles.textPress}>=</Text>
@@ -93,7 +103,7 @@ const styles = StyleSheet.create({
     },
     text:{
         fontSize:25,
-        margin:10
+        margin:5
     },
     row:{
         
@@ -112,7 +122,16 @@ const styles = StyleSheet.create({
     },
     textCalcul:{
         fontSize:15,
-        margin:7
+        margin:3
+    },
+    input:{
+        maxWidth:300,
+        borderWidth:1,
+        borderColor:"black",
+        borderRadius:5,
+        fontSize:20,
+        margin:5,
+        color:"grey"
     }
 })
 export default Calculatrice;
